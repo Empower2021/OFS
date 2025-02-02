@@ -1,0 +1,50 @@
+tRun tSS TAG
+
+TAG is id of OFS.SOURCE Application ;tRun - used to execute complied basic files ;tSS - Name of the program to create an OFS session
+
+1. Sub and multi value creation/deletion :
+---------------------------------------
+Creation:
+ACCOUNT,/I/PROCESS//1,INPUTT/123456,,CUSTOMER=100100,CATEGORY=1001,CURRENCY=USD,OTHER.OFFICER:1:1=1
+
+Deletion:
+ACCOUNT,/I/PROCESS//1,INPUTT/123456,,CUSTOMER=100100,CATEGORY=1001,CURRENCY=USD,OTHER.OFFICER:1:1=NULL
+ACCOUNT,/I/PROCESS//1,INPUTT/123456,122912,OTHER.OFFICER:2:1=-
+
+ONE MULTIVALUE - (NULL)
+TWO MULTIVALUE - (-)
+
+====================================================================================================================
+2. // Concept:
+---------------
+LD.LOANS.AND.DEPOSITS,CORPORATE/I/PROCESS/1,INPUTT/123456,,CUSTOMER.ID=100100,CURRENCY=USD,AMOUNT=10,FIN.MAT.DATE::=20230420,INTEREST.RATE::=3.13,CATEGORY=21059,DEFINE.SCHEDS::=YES//FORWARD.BACKWARD::=4,BASE.DATE.KEY::=3,SCH.TYPE:1:1:=B,DATE:1:1:=20230415,AMOUNT:1=20,SCH.TYPE:2:1:=IP,DATE:2:1:=20230420,AMOUNT:2=30
+
+ld schedule gets opened
+
+======================================================================================================================
+3. Special Character:
+---------------------
+CUSTOMER,/I/PROCESS//0,INPUTT/123456,,MNEMONIC=GOPI3433,RESIDENCE=IN,SECTOR=1000,ACCOUNT.OFFICER=1,INDUSTRY=1000,TARGET=1,NATIONALITY=IN,CUSTOMER.STATUS=1,SHORT.NAME:1= LOGESHRAJP,NAME.1:1=LOGESHRAJ?P^,FURTHER.DETAILS="bx",LANGUAGE=1
+
+Actual character	OFS compliant
+
+/	^
+“	
+		|
+,	?
+
+
+=======================================================================================================================
+4. Multi-Company processing:
+----------------------------
+ACCOUNT,/I/PROCESS//1,INPUTT/123456/MX0010001,,CUSTOMER=555555,CATEGORY=1007,CURRENCY=USD
+
+=======================================================================================================================
+5. Wrapping messages with tags:
+-------------------------------
+<MSG1>ABBREVIATION,INPUTT/123456,SEC,ORIGINAL.TEXT=SECTOR</MSG1>
+
+=========================================================================================================================
+
+
+
